@@ -1,131 +1,1117 @@
 <!DOCTYPE html>
-
 <html lang="es">
 
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <meta name="description" content="Perfil personal de Madonna Arias Agudelo, estudiante de Tecnología en Sistemas Informáticos.">
-
-    <meta property="og:title" content="Perfil de Madonna Arias">
-
-    <meta property="og:description" content="Conoce a Madonna Arias Agudelo, estudiante de Tecnología en Sistemas Informáticos.">
-
+    <meta name="description"
+        content="Portafolio personal de Madonna Arias Agudelo, estudiante de Tecnología en Sistemas Informáticos.">
+    <meta property="og:title" content="Portafolio de Madonna Arias">
+    <meta property="og:description"
+        content="Conoce mi perfil, formación, habilidades, proyectos y metas en el área de tecnología.">
     <meta property="og:image" content="foto-perfil.jpg">
-
     <meta property="og:type" content="website">
+    <title>Madonna Arias | Portafolio</title>
 
-    <title>Mi Perfil - Madonna Arias</title>
+    <!-- =====================================================
+         CSS
+         ===================================================== -->
+    <style>
+        /* =====================================================
+           VARIABLES
+           ===================================================== */
+        :root {
+            --rosa: #b85c72;
+            --rosa-oscuro: #914557;
+            --rosa-claro: #f8e8ed;
+            --rosa-muy-claro: #fff8fa;
+            --crema: #fffaf7;
+            --blanco: #ffffff;
+            --texto: #3c3437;
+            --texto-suave: #756b6f;
+            --dorado: #b58a55;
+            --dorado-claro: #e8cda5;
+            --borde: #eadcdf;
+        }
 
+        /* =====================================================
+           CONFIGURACIÓN GENERAL
+           ===================================================== */
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--texto);
+            background-color: var(--crema);
+        }
+
+        /* =====================================================
+           NAVEGACIÓN
+           ===================================================== */
+        .navegacion {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background-color: rgba(255, 255, 255, 0.96);
+            border-bottom: 1px solid var(--borde);
+            box-shadow: 0 3px 12px rgba(80, 45, 55, 0.06);
+        }
+
+        .nav-contenedor {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 12px 25px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .logo {
+            color: var(--rosa-oscuro);
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        .logo span {
+            color: var(--dorado);
+        }
+
+        .menu {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 5px;
+            flex-wrap: wrap;
+        }
+
+        .menu a {
+            color: var(--texto);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            padding: 8px 10px;
+            border-radius: 20px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .menu a:hover {
+            background-color: var(--rosa-claro);
+            color: var(--rosa-oscuro);
+        }
+
+        /* =====================================================
+           INICIO
+           ===================================================== */
+        .inicio {
+            background: linear-gradient(135deg, var(--rosa), var(--rosa-oscuro));
+            color: var(--blanco);
+            padding: 80px 25px;
+            overflow: hidden;
+        }
+
+        .inicio-contenido {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 70px;
+        }
+
+        .inicio-texto {
+            flex: 1;
+            max-width: 600px;
+        }
+
+        .etiqueta {
+            margin: 0 0 10px 0;
+            color: #f4d5ad;
+            font-size: 0.8rem;
+            font-weight: bold;
+            letter-spacing: 3px;
+        }
+
+        .inicio h1 {
+            margin: 0;
+            font-size: 3.3rem;
+            line-height: 1.15;
+        }
+
+        .inicio h1 span {
+            display: block;
+            color: #f7dfbd;
+        }
+
+        .texto-intro {
+            max-width: 560px;
+            margin: 25px 0;
+            color: #fff3f6;
+            font-size: 1.08rem;
+        }
+
+        /* =====================================================
+           BOTONES
+           ===================================================== */
+        .botones {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .boton {
+            display: inline-block;
+            padding: 11px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+
+        .boton:hover {
+            transform: translateY(-2px);
+        }
+
+        .boton.principal {
+            background-color: var(--blanco);
+            color: var(--rosa-oscuro);
+        }
+
+        .boton.secundario {
+            border: 1px solid #f1d7df;
+            color: var(--blanco);
+        }
+
+        .boton.secundario:hover {
+            background-color: rgba(255, 255, 255, 0.12);
+        }
+
+        /* =====================================================
+           FOTO
+           ===================================================== */
+        .inicio-foto {
+            position: relative;
+            width: 240px;
+            height: 240px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .inicio-foto img {
+            position: relative;
+            z-index: 2;
+            width: 200px;
+            height: auto;
+            border-radius: 50%;
+            border: 5px solid var(--blanco);
+            display: block;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.20);
+        }
+
+        .decoracion {
+            position: absolute;
+            width: 230px;
+            height: 230px;
+            border: 2px solid var(--dorado-claro);
+            border-radius: 50%;
+            opacity: 0.7;
+        }
+
+        /* =====================================================
+           SECCIONES
+           ===================================================== */
+        .seccion {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 75px 25px;
+        }
+
+        .fondo-suave {
+            max-width: none;
+            padding-left: max(25px, calc((100% - 1000px) / 2));
+            padding-right: max(25px, calc((100% - 1000px) / 2));
+            background-color: var(--rosa-muy-claro);
+        }
+
+        /* =====================================================
+           TÍTULOS
+           ===================================================== */
+        .titulo-seccion {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 35px;
+        }
+
+        .titulo-seccion span {
+            color: var(--dorado);
+            font-size: 0.8rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .titulo-seccion h2 {
+            margin: 0;
+            color: var(--rosa-oscuro);
+            font-size: 2rem;
+        }
+
+        .titulo-seccion h2::after {
+            content: "";
+            display: block;
+            width: 45px;
+            height: 3px;
+            margin-top: 7px;
+            background-color: var(--dorado);
+            border-radius: 3px;
+        }
+
+        .introduccion {
+            max-width: 650px;
+            margin-top: -15px;
+            margin-bottom: 30px;
+            color: var(--texto-suave);
+        }
+
+        /* =====================================================
+           SOBRE MÍ
+           ===================================================== */
+        .sobre-grid {
+            display: grid;
+            grid-template-columns: 1.4fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .sobre-texto {
+            padding-right: 20px;
+        }
+
+        .sobre-texto p {
+            color: var(--texto-suave);
+        }
+
+        .sobre-texto .destacado {
+            color: var(--rosa-oscuro);
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .datos-personales {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .dato {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 17px;
+            background-color: var(--blanco);
+            border: 1px solid var(--borde);
+            border-radius: 12px;
+        }
+
+        .dato>span {
+            width: 42px;
+            height: 42px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            background-color: var(--rosa-claro);
+            border-radius: 50%;
+        }
+
+        .dato strong {
+            color: var(--rosa-oscuro);
+        }
+
+        .dato p {
+            margin: 2px 0 0 0;
+            color: var(--texto-suave);
+            font-size: 0.9rem;
+        }
+
+        /* =====================================================
+           FORMACIÓN
+           ===================================================== */
+        .formacion-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 22px;
+        }
+
+        .tarjeta-formacion {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            padding: 25px;
+            background-color: var(--blanco);
+            border: 1px solid var(--borde);
+            border-radius: 16px;
+            box-shadow: 0 6px 18px rgba(80, 45, 55, 0.05);
+        }
+
+        .icono {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            background-color: var(--rosa-claro);
+            border-radius: 12px;
+            font-size: 1.4rem;
+        }
+
+        .fecha {
+            color: var(--dorado);
+            font-size: 0.75rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .tarjeta-formacion h3 {
+            margin: 7px 0;
+            color: var(--rosa-oscuro);
+        }
+
+        .tarjeta-formacion p {
+            margin: 0;
+            color: var(--texto-suave);
+        }
+
+        .tarjeta-formacion small {
+            color: var(--texto-suave);
+        }
+
+        /* =====================================================
+           HABILIDADES
+           ===================================================== */
+        .habilidades-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .habilidad {
+            padding: 25px;
+            background-color: var(--blanco);
+            border: 1px solid var(--borde);
+            border-radius: 15px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .habilidad:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 22px rgba(80, 45, 55, 0.09);
+        }
+
+        .habilidad-icono {
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+            background-color: var(--rosa-claro);
+            color: var(--rosa-oscuro);
+            border-radius: 10px;
+            font-weight: bold;
+        }
+
+        .habilidad h3 {
+            margin: 0 0 8px 0;
+            color: var(--rosa-oscuro);
+        }
+
+        .habilidad p {
+            margin: 0;
+            color: var(--texto-suave);
+            font-size: 0.9rem;
+        }
+
+        /* =====================================================
+           PROYECTOS
+           ===================================================== */
+        .proyectos-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 22px;
+        }
+
+        .proyecto {
+            display: flex;
+            gap: 20px;
+            padding: 30px;
+            background-color: var(--blanco);
+            border: 1px solid var(--borde);
+            border-radius: 16px;
+            box-shadow: 0 6px 18px rgba(80, 45, 55, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .proyecto:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 25px rgba(80, 45, 55, 0.10);
+        }
+
+        .proyecto-numero {
+            color: var(--dorado);
+            font-size: 1.3rem;
+            font-weight: bold;
+        }
+
+        .proyecto-tipo {
+            color: var(--dorado);
+            font-size: 0.7rem;
+            font-weight: bold;
+            letter-spacing: 1.5px;
+        }
+
+        .proyecto h3 {
+            margin: 7px 0 10px 0;
+            color: var(--rosa-oscuro);
+        }
+
+        .proyecto p {
+            color: var(--texto-suave);
+        }
+
+        .tecnologias {
+            display: flex;
+            gap: 7px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+
+        .tecnologias span {
+            padding: 5px 9px;
+            background-color: var(--rosa-claro);
+            color: var(--rosa-oscuro);
+            border-radius: 15px;
+            font-size: 0.72rem;
+            font-weight: bold;
+        }
+
+        /* =====================================================
+           METAS
+           ===================================================== */
+        .metas-contenedor {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+
+        .meta-principal {
+            padding: 35px;
+            background: linear-gradient(135deg, var(--rosa), var(--rosa-oscuro));
+            color: var(--blanco);
+            border-radius: 18px;
+        }
+
+        .estrella {
+            color: #f2d3a4;
+            font-size: 2rem;
+        }
+
+        .meta-principal h3 {
+            font-size: 1.5rem;
+            margin: 10px 0;
+        }
+
+        .meta-principal p {
+            color: #fff1f5;
+        }
+
+        .metas-lista {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .meta {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 13px 15px;
+            border-bottom: 1px solid var(--borde);
+        }
+
+        .meta span {
+            color: var(--dorado);
+            font-weight: bold;
+            font-size: 0.8rem;
+        }
+
+        .meta p {
+            margin: 0;
+            color: var(--texto-suave);
+        }
+
+        /* =====================================================
+           CONTACTO
+           ===================================================== */
+        .contacto {
+            max-width: none;
+            padding-left: max(25px, calc((100% - 1000px) / 2));
+            padding-right: max(25px, calc((100% - 1000px) / 2));
+            background-color: var(--rosa-muy-claro);
+        }
+
+        .contacto-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .contacto-texto h3 {
+            color: var(--rosa-oscuro);
+            font-size: 1.5rem;
+        }
+
+        .contacto-texto p {
+            color: var(--texto-suave);
+        }
+
+        .correo {
+            display: inline-block;
+            margin-top: 10px;
+            color: var(--rosa-oscuro);
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .correo:hover {
+            color: var(--dorado);
+        }
+
+        /* =====================================================
+           FORMULARIO
+           ===================================================== */
+        .formulario {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .formulario label {
+            margin-top: 8px;
+            color: var(--rosa-oscuro);
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .formulario input,
+        .formulario textarea {
+            width: 100%;
+            padding: 12px 14px;
+            font-family: inherit;
+            font-size: 1rem;
+            color: var(--texto);
+            background-color: var(--blanco);
+            border: 1px solid var(--borde);
+            border-radius: 9px;
+            outline: none;
+        }
+
+        .formulario input:focus,
+        .formulario textarea:focus {
+            border-color: var(--rosa);
+            box-shadow: 0 0 0 3px var(--rosa-claro);
+        }
+
+        .formulario textarea {
+            resize: vertical;
+        }
+
+        .formulario button {
+            align-self: flex-start;
+            margin-top: 12px;
+            padding: 11px 22px;
+            border: none;
+            border-radius: 22px;
+            background-color: var(--rosa);
+            color: var(--blanco);
+            font-family: inherit;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .formulario button:hover {
+            background-color: var(--rosa-oscuro);
+        }
+
+        /* =====================================================
+           FOOTER
+           ===================================================== */
+        footer {
+            background-color: var(--rosa-oscuro);
+            color: var(--blanco);
+            padding: 30px 25px;
+        }
+
+        .footer-contenido {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 30px;
+        }
+
+        footer p {
+            margin: 4px 0;
+            color: #f8e9ed;
+            font-size: 0.9rem;
+        }
+
+        footer .footer-nombre {
+            color: var(--blanco);
+            font-size: 1.1rem;
+            font-weight: bold;
+        }
+
+        /* =====================================================
+           ACCESIBILIDAD
+           ===================================================== */
+        a:focus,
+        button:focus,
+        input:focus,
+        textarea:focus {
+            outline: 2px solid var(--dorado);
+            outline-offset: 2px;
+        }
+
+        /* =====================================================
+           RESPONSIVE
+           ===================================================== */
+        @media (max-width: 850px) {
+            .nav-contenedor {
+                flex-direction: column;
+            }
+
+            .menu {
+                justify-content: center;
+            }
+
+            .inicio-contenido {
+                flex-direction: column-reverse;
+                text-align: center;
+            }
+
+            .botones {
+                justify-content: center;
+            }
+
+            .sobre-grid,
+            .metas-contenedor,
+            .contacto-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .formacion-grid,
+            .proyectos-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .habilidades-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .sobre-texto {
+                padding-right: 0;
+            }
+        }
+
+        @media (max-width: 550px) {
+            .inicio {
+                padding: 55px 20px;
+            }
+
+            .inicio h1 {
+                font-size: 2.3rem;
+            }
+
+            .inicio-foto {
+                width: 220px;
+                height: 220px;
+            }
+
+            .inicio-foto img {
+                width: 180px;
+            }
+
+            .decoracion {
+                width: 205px;
+                height: 205px;
+            }
+
+            .habilidades-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .seccion {
+                padding-top: 55px;
+                padding-bottom: 55px;
+            }
+
+            .menu a {
+                font-size: 0.8rem;
+                padding: 7px 8px;
+            }
+
+            .footer-contenido {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-    <header>
-
-        <h1>Madonna Arias Agudelo</h1>
-
-        <p>Estudiante de Tecnología en Sistemas Informáticos, interesada en la tecnología y la inteligencia artificial.</p>
-
-        <img src="foto-perfil.jpg" alt="Foto de Madonna Arias" width="200">
-
-    </header>
-
-
-    <nav>
-
-        <a href="#sobre-mi">Sobre mí</a>
-
-        <a href="#carrera">Mi carrera</a>
-
-        <a href="#intereses">Mis intereses</a>
-
-        <a href="#metas">Mis metas</a>
-
+    <!-- =====================================================
+         NAVEGACIÓN
+         ===================================================== -->
+    <nav class="navegacion">
+        <div class="nav-contenedor">
+            <a href="#inicio" class="logo">
+                Madonna<span>.</span>
+            </a>
+            <div class="menu">
+                <a href="#inicio">Inicio</a>
+                <a href="#sobre-mi">Sobre mí</a>
+                <a href="#formacion">Formación</a>
+                <a href="#habilidades">Habilidades</a>
+                <a href="#proyectos">Proyectos</a>
+                <a href="#metas">Metas</a>
+                <a href="#contacto">Contacto</a>
+            </div>
+        </div>
     </nav>
 
+    <!-- =====================================================
+         INICIO
+         ===================================================== -->
+    <header id="inicio" class="inicio">
+        <div class="inicio-contenido">
+            <div class="inicio-texto">
+                <p class="etiqueta">
+                    ESTUDIANTE DE TECNOLOGÍA
+                </p>
+                <h1>
+                    Hola, soy
+                    <span>Madonna Arias</span>
+                </h1>
+                <p class="texto-intro">
+                    Estudiante de Tecnología en Sistemas Informáticos,
+                    interesada en la programación, el desarrollo web,
+                    la inteligencia artificial y la seguridad informática.
+                </p>
+                <div class="botones">
+                    <a href="#sobre-mi" class="boton principal">
+                        Conóceme
+                    </a>
+                    <a href="#proyectos" class="boton secundario">
+                        Ver proyectos
+                    </a>
+                </div>
+            </div>
 
+            <div class="inicio-foto">
+                <div class="decoracion"></div>
+                <img src="foto-perfil.jpg" alt="Foto de Madonna Arias">
+            </div>
+        </div>
+    </header>
+
+    <!-- =====================================================
+         CONTENIDO PRINCIPAL
+         ===================================================== -->
     <main>
 
-        <section id="sobre-mi">
+        <!-- =================================================
+             SOBRE MÍ
+             ================================================= -->
+        <section id="sobre-mi" class="seccion">
+            <div class="titulo-seccion">
+                <span>01</span>
+                <h2>Sobre mí</h2>
+            </div>
 
-            <h2>Sobre mí</h2>
+            <div class="sobre-grid">
+                <div class="sobre-texto">
+                    <p class="destacado">
+                        Soy Madonna Arias Agudelo, tengo 23 años y nací
+                        en Manizales, Caldas.
+                    </p>
+                    <p>
+                        Actualmente estoy cursando tercer semestre de
+                        Tecnología en Sistemas Informáticos en la
+                        Universidad de Caldas.
+                    </p>
+                    <p>
+                        Me interesa aprender sobre tecnología y desarrollar
+                        nuevas habilidades que me permitan crecer tanto
+                        académica como profesionalmente.
+                    </p>
+                </div>
 
-            <p>
+                <div class="datos-personales">
+                    <div class="dato">
+                        <span>📍</span>
+                        <div>
+                            <strong>Ubicación</strong>
+                            <p>Manizales, Caldas</p>
+                        </div>
+                    </div>
 
-                Tengo 23 años y nací en Manizales, Caldas.
+                    <div class="dato">
+                        <span>🎓</span>
+                        <div>
+                            <strong>Estudio</strong>
+                            <p>Tecnología en Sistemas Informáticos</p>
+                        </div>
+                    </div>
 
-                Actualmente estoy cursando tercer semestre de Tecnología
-
-                de Sistemas Informáticos en la Universidad de Caldas.
-
-            </p>
-
+                    <div class="dato">
+                        <span>💻</span>
+                        <div>
+                            <strong>Intereses</strong>
+                            <p>Programación y tecnología</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
 
+        <!-- =================================================
+             FORMACIÓN
+             ================================================= -->
+        <section id="formacion" class="seccion fondo-suave">
+            <div class="titulo-seccion">
+                <span>02</span>
+                <h2>Mi formación</h2>
+            </div>
 
-        <section id="carrera">
+            <div class="formacion-grid">
+                <article class="tarjeta-formacion">
+                    <div class="icono">🎓</div>
+                    <div>
+                        <span class="fecha">Actualmente</span>
+                        <h3>Tecnología en Sistemas Informáticos</h3>
+                        <p>Universidad de Caldas</p>
+                        <small>Tercer semestre</small>
+                    </div>
+                </article>
 
-            <h2>¿Por qué elegí esta carrera?</h2>
-
-            <p>
-
-                Elegí esta carrera porque me gusta la tecnología y considero
-
-                que tiene mucho campo laboral y muchas oportunidades para
-
-                crecer profesionalmente.
-
-            </p>
-
+                <article class="tarjeta-formacion">
+                    <div class="icono">💻</div>
+                    <div>
+                        <span class="fecha">2026</span>
+                        <h3>Programación para Entornos Web 1</h3>
+                        <p>Desarrollo de proyectos web</p>
+                        <small>HTML5 · CSS3 · Diseño web</small>
+                    </div>
+                </article>
+            </div>
         </section>
 
+        <!-- =================================================
+             HABILIDADES
+             ================================================= -->
+        <section id="habilidades" class="seccion">
+            <div class="titulo-seccion">
+                <span>03</span>
+                <h2>Mis habilidades</h2>
+            </div>
 
-        <section id="intereses">
-
-            <h2>Mis intereses</h2>
-
-            <p>
-
-                Me interesan la programación, las páginas web, las aplicaciones,
-
-                la inteligencia artificial y la seguridad informática.
-
+            <p class="introduccion">
+                Algunas de las áreas y tecnologías que estoy aprendiendo
+                durante mi formación.
             </p>
 
+            <div class="habilidades-grid">
+                <article class="habilidad">
+                    <div class="habilidad-icono">&lt;/&gt;</div>
+                    <h3>HTML5</h3>
+                    <p>Estructura y organización semántica de páginas web.</p>
+                </article>
+
+                <article class="habilidad">
+                    <div class="habilidad-icono">#</div>
+                    <h3>CSS3</h3>
+                    <p>Diseño, colores, tipografía, Flexbox y Grid.</p>
+                </article>
+
+                <article class="habilidad">
+                    <div class="habilidad-icono">JS</div>
+                    <h3>Programación</h3>
+                    <p>Aprendiendo lógica y desarrollo de aplicaciones.</p>
+                </article>
+
+                <article class="habilidad">
+                    <div class="habilidad-icono">AI</div>
+                    <h3>Inteligencia artificial</h3>
+                    <p>Área de tecnología que me interesa seguir explorando.</p>
+                </article>
+
+                <article class="habilidad">
+                    <div class="habilidad-icono">🔐</div>
+                    <h3>Seguridad informática</h3>
+                    <p>Área en la que me gustaría desarrollarme profesionalmente.</p>
+                </article>
+
+                <article class="habilidad">
+                    <div class="habilidad-icono">🌐</div>
+                    <h3>Desarrollo web</h3>
+                    <p>Creación y diseño de sitios web.</p>
+                </article>
+            </div>
         </section>
 
+        <!-- =================================================
+             PROYECTOS
+             ================================================= -->
+        <section id="proyectos" class="seccion fondo-suave">
+            <div class="titulo-seccion">
+                <span>04</span>
+                <h2>Mis proyectos</h2>
+            </div>
 
-        <section id="metas">
-
-            <h2>Mis metas</h2>
-
-            <p>
-
-                Una de mis metas es poder trabajar en el área de seguridad
-
-                informática o inteligencia artificial y seguir aprendiendo
-
-                sobre tecnología.
-
+            <p class="introduccion">
+                Proyectos que estoy desarrollando como parte de mi
+                aprendizaje en tecnología y desarrollo web.
             </p>
 
+            <div class="proyectos-grid">
+                <article class="proyecto">
+                    <div>
+                        <span class="proyecto-numero">01</span>
+                        <span class="proyecto-tipo">ACADÉMICO</span>
+                        <h3>Portafolio Personal</h3>
+                        <p>Sitio web adaptable estructurado con HTML semántico y estilos modernos en CSS para mostrar perfil profesional.</p>
+                        <div class="tecnologias">
+                            <span>HTML5</span>
+                            <span>CSS3</span>
+                            <span>Responsive</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="proyecto">
+                    <div>
+                        <span class="proyecto-numero">02</span>
+                        <span class="proyecto-tipo">PRÁCTICA</span>
+                        <h3>Interfaz de Reciclaje</h3>
+                        <p>Conceptualización de una interfaz web enfocada en sostenibilidad con diseño ecológico y verde.</p>
+                        <div class="tecnologias">
+                            <span>UI/UX</span>
+                            <span>Diseño Web</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- =================================================
+             METAS
+             ================================================= -->
+        <section id="metas" class="seccion">
+            <div class="titulo-seccion">
+                <span>05</span>
+                <h2>Mis metas</h2>
+            </div>
+
+            <div class="metas-contenedor">
+                <div class="meta-principal">
+                    <div class="estrella">⭐</div>
+                    <h3>Crecimiento Profesional</h3>
+                    <p>Graduarme como Tecnóloga en Sistemas Informáticos y especializarme en áreas de alta demanda tecnológica con sólidos valores éticos.</p>
+                </div>
+
+                <div class="metas-lista">
+                    <div class="meta">
+                        <span>01</span>
+                        <p>Aprender frameworks y librerías avanzadas de desarrollo.</p>
+                    </div>
+                    <div class="meta">
+                        <span>02</span>
+                        <p>Contribuir a proyectos de código abierto y software social.</p>
+                    </div>
+                    <div class="meta">
+                        <span>03</span>
+                        <p>Dominar los fundamentos sólidos de ciberseguridad.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =================================================
+             CONTACTO
+             ================================================= -->
+        <section id="contacto" class="seccion contacto">
+            <div class="contacto-grid">
+                <div class="contacto-texto">
+                    <div class="titulo-seccion">
+                        <span>06</span>
+                        <h2>Contacto</h2>
+                    </div>
+                    <h3>¡Hablemos!</h3>
+                    <p>Si deseas contactarme para proyectos, dudas o propuestas académicas, puedes enviarme un mensaje mediante el formulario o escribirme directamente.</p>
+                    <a href="mailto:contacto@madonnaarias.com" class="correo">contacto@madonnaarias.com</a>
+                </div>
+
+                <form class="formulario">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
+
+                    <label for="email">Correo electrónico</label>
+                    <input type="email" id="email" name="email" placeholder="tucorreo@ejemplo.com" required>
+
+                    <label for="mensaje">Mensaje</label>
+                    <textarea id="mensaje" name="mensaje" rows="4" placeholder="Escribe tu mensaje aquí..." required></textarea>
+
+                    <button type="submit">Enviar mensaje</button>
+                </form>
+            </div>
         </section>
 
     </main>
 
-
+    <!-- =====================================================
+         FOOTER
+         ===================================================== -->
     <footer>
-
-        <p>Correo: madonna.arias60929@ucaldas.edu.co</p>
-
-        <p>2026 - Madonna Arias Agudelo</p>
-
+        <div class="footer-contenido">
+            <div>
+                <p class="footer-nombre">Madonna Arias Agudelo</p>
+                <p>Estudiante de Tecnología en Sistemas Informáticos</p>
+            </div>
+            <div>
+                <p>&copy; 2026 - Universidad de Caldas</p>
+                <p>Manizales, Colombia</p>
+            </div>
+        </div>
     </footer>
 
 </body>
-
 </html>
